@@ -59,6 +59,8 @@ class UrbanRoutesPage:
     helado_counter = locators.LocatorsUrbanRoutesPage.helado_counter
     smart_button_main = locators.LocatorsUrbanRoutesPage.smart_button_main
     modal_window = locators.LocatorsUrbanRoutesPage.modal_window
+    modal_order_header_title = locators.LocatorsUrbanRoutesPage.modal_order_header_title
+    modal_window_driver = locators.LocatorsUrbanRoutesPage.modal_window_driver
 
     def __init__(self, driver):
         self.driver = driver
@@ -158,6 +160,13 @@ class UrbanRoutesPage:
 
     def wait_for_load_modal(self):
         WebDriverWait(self.driver, 3).until(expected_conditions.visibility_of_element_located(*self.modal_window))
+
+    def get_modal_window_text(self):
+        return self.driver.find_element(*self.modal_order_header_title).text
+
+    def wait_for_load_modal_driver_info(self):
+        WebDriverWait(self.driver, 3).until(expected_conditions.visibility_of_element_located(*self.modal_window_driver))
+
 
 
 

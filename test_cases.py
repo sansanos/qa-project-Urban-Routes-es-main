@@ -1,4 +1,4 @@
-
+from selenium.webdriver.ie.webdriver import WebDriver
 import data
 import locators
 from data import address_from, address_to
@@ -11,10 +11,9 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 
-
 class TestUrbanRoutes:
     driver = None
-    #methods = None
+    methods = None
 
     def __init__(self, driver):
         self.driver = driver
@@ -43,7 +42,9 @@ class TestUrbanRoutes:
     # Seleccionar la tarifa
     def test_comfort_text(self):
         self.UrbanRoutesPage.button_comfort_click()
-        assert self.UrbanRoutesPage.wait_for_comfort_options() == 400
+        self.UrbanRoutesPage.wait_for_comfort_options()
+        assert self.UrbanRoutesPage.get_button_comfort_click_text == 'Comfort'
+        assert self.UrbanRoutesPage.button_comfort_click()
 
     # Rellenar el numero de telefono
     def test_full_phone_number(self):
@@ -73,6 +74,23 @@ class TestUrbanRoutes:
     # Pedir una manta y panuelos
     def test_manta_panuelos_slider(self):
         self.UrbanRoutesPage.manta_panuelo_slider_click()
+
+    # Pedir 2 helados
+    def test_dos_helados(self):
+        self.UrbanRoutesPage.helado_plus_click()
+        self.UrbanRoutesPage.helado_plus_click()
+        assert self.UrbanRoutesPage.get_helado_counter == '2'
+
+    # Aparece el modal para buscar un taxi
+    def test_modal_window(self):
+        self.UrbanRoutesPage.smart_button_main_click()
+        self.UrbanRoutesPage.wait_for_load_modal()
+        assert self.UrbanRoutesPage.get_modal_window_text == 'Buscar automóvil'
+
+    # Esperar a que aparezca la informacion del conductor en el modal
+    def test_modal_window_driver(self):
+        self.UrbanRoutesPage.wait_for_load_modal_driver_info()
+        assert self.UrbanRoutesPage.get_modal_window_text() == 'El conductor llegará en 8 min.'
 
 
     @classmethod

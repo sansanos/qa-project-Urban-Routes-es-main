@@ -24,4 +24,6 @@ class LocatorsUrbanRoutesPage:
     helado_counter = (By.XPATH, '//*[@id="root"]/div/div[3]/div[3]/div[2]/div[2]/div[4]/div[2]/div[3]/div/div[2]/div[1]/div/div[2]/div/div[2]') # text
     smart_button_main = (By.CLASS_NAME, 'smart-button-main') # click()
     modal_window = (By.CLASS_NAME, 'order-body') # wait
+    modal_order_header_title = (By.CLASS_NAME, 'order-header-title') # text
+    modal_window_driver = (By.CLASS_NAME, 'order-body') # wait
 
