@@ -1,21 +1,15 @@
-import time
-
 from selenium.webdriver.ie.webdriver import WebDriver
+import time
 import data
-import locators
+from locators import LocatorsUrbanRoutesPage
 from methods import UrbanRoutesPage
 from selenium import webdriver
-from selenium.webdriver import Keys
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions
-from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 
 
 class TestUrbanRoutes:
     driver = None
-    UrbanRoutesPage = None
 
     @classmethod
     def setup_class(cls):

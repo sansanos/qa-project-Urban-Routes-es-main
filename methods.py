@@ -8,7 +8,6 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 import locators
 
-
 # no modificar
 def retrieve_phone_code(driver) -> str:
     """Este código devuelve un número de confirmación de teléfono y lo devuelve como un string.
@@ -37,30 +36,6 @@ def retrieve_phone_code(driver) -> str:
         return code
 
 class UrbanRoutesPage:
-    from_field = locators.LocatorsUrbanRoutesPage.from_field
-    to_field = locators.LocatorsUrbanRoutesPage.to_field
-    button_round = locators.LocatorsUrbanRoutesPage.button_round
-    button_comfort = locators.LocatorsUrbanRoutesPage.button_comfort
-    button_phone_number = locators.LocatorsUrbanRoutesPage.button_phone_number
-    phone_number_holder = locators.LocatorsUrbanRoutesPage.phone_number_holder
-    button_phone_next = locators.LocatorsUrbanRoutesPage.button_phone_next
-    sms_code_holder = locators.LocatorsUrbanRoutesPage.sms_code_holder
-    button_sms_code_confirmation = locators.LocatorsUrbanRoutesPage.button_sms_code_confirmation
-    button_payment = locators.LocatorsUrbanRoutesPage.button_payment
-    button_add_card = locators.LocatorsUrbanRoutesPage.button_add_card
-    card_number_holder = locators.LocatorsUrbanRoutesPage.card_number_holder
-    card_code_holder = locators.LocatorsUrbanRoutesPage.card_code_holder
-    click_code_holder = locators.LocatorsUrbanRoutesPage.click_code_holder
-    add_card_confirmation = locators.LocatorsUrbanRoutesPage.add_card_confirmation
-    card_quit = locators.LocatorsUrbanRoutesPage.card_quit
-    message_for_driver_holder = locators.LocatorsUrbanRoutesPage.message_for_driver_holder
-    manta_panuelo_slider = locators.LocatorsUrbanRoutesPage.manta_panuelo_slider
-    helado_plus = locators.LocatorsUrbanRoutesPage.helado_plus
-    helado_counter = locators.LocatorsUrbanRoutesPage.helado_counter
-    smart_button_main = locators.LocatorsUrbanRoutesPage.smart_button_main
-    modal_window = locators.LocatorsUrbanRoutesPage.modal_window
-    modal_order_header_title = locators.LocatorsUrbanRoutesPage.modal_order_header_title
-    modal_window_driver = locators.LocatorsUrbanRoutesPage.modal_window_driver
 
     def __init__(self, driver):
         self.driver = driver
@@ -69,103 +44,103 @@ class UrbanRoutesPage:
         WebDriverWait(self.driver, 10).until(expected_conditions.visibility_of_element_located(self.from_field))
 
     def set_from(self, address_from):
-        self.driver.find_element(*self.from_field).send_keys(address_from)
+        self.driver.find_element(*locators.LocatorsUrbanRoutesPage.from_field).send_keys(address_from)
 
     def set_to(self, address_to):
-        self.driver.find_element(*self.to_field).send_keys(address_to)
+        self.driver.find_element(*locators.LocatorsUrbanRoutesPage.to_field).send_keys(address_to)
 
     def get_from(self):
-        return self.driver.find_element(*self.from_field).get_property('value')
+        return self.driver.find_element(*locators.LocatorsUrbanRoutesPage.from_field).get_property('value')
 
     def get_to(self):
-        return self.driver.find_element(*self.to_field).get_property('value')
+        return self.driver.find_element(*locators.LocatorsUrbanRoutesPage.to_field).get_property('value')
 
     def button_round_click(self):
-        return self.driver.find_element(*self.button_round).click()
+        return self.driver.find_element(*locators.LocatorsUrbanRoutesPage.button_round).click()
 
     def button_comfort_click(self):
-        return self.driver.find_element(*self.button_comfort).click()
+        return self.driver.find_element(*locators.LocatorsUrbanRoutesPage.button_comfort).click()
 
     def wait_for_comfort_options(self):
-        WebDriverWait(self.driver, 3).until(expected_conditions.visibility_of_element_located(*self.manta_panuelo_slider))
+        WebDriverWait(self.driver, 3).until(expected_conditions.visibility_of_element_located(*locators.LocatorsUrbanRoutesPage.manta_panuelo_slider))
 
     def get_button_comfort_click_text(self):
-        return self.driver.find_element(*self.button_comfort).text
+        return self.driver.find_element(*locators.LocatorsUrbanRoutesPage.button_comfort).text
 
     def button_phone_number_click(self):
-        return self.driver.find_element(*self.button_phone_number).click()
+        return self.driver.find_element(*locators.LocatorsUrbanRoutesPage.button_phone_number).click()
 
     def phone_number_holder_set(self, phone_number):
-        return self.driver.find_element(*self.phone_number_holder).send_keys(phone_number)
+        return self.driver.find_element(*locators.LocatorsUrbanRoutesPage.phone_number_holder).send_keys(phone_number)
 
     def get_phone_number(self):
-        return self.driver.find_element(*self.phone_number_holder).get_property('value')
+        return self.driver.find_element(*locators.LocatorsUrbanRoutesPage.phone_number_holder).get_property('value')
 
     def button_phone_next_click(self):
-        return self.driver.find_element(*self.button_phone_next).click()
+        return self.driver.find_element(*locators.LocatorsUrbanRoutesPage.button_phone_next).click()
 
     def sms_code_holder_set(self, code):
-        return self.driver.find_element(*self.sms_code_holder).send_keys(code)
+        return self.driver.find_element(*locators.LocatorsUrbanRoutesPage.sms_code_holder).send_keys(code)
 
     def get_sms_code(self):
-        return self.driver.find_element(*self.sms_code_holder).get_property('value')
+        return self.driver.find_element(*locators.LocatorsUrbanRoutesPage.sms_code_holder).get_property('value')
 
     def button_sms_code_confirmation_click(self):
-        return self.driver.find_element(*self.button_sms_code_confirmation).click()
+        return self.driver.find_element(*locators.LocatorsUrbanRoutesPage.button_sms_code_confirmation).click()
 
     def button_payment_click(self):
-        return self.driver.find_element(*self.button_payment).click()
+        return self.driver.find_element(*locators.LocatorsUrbanRoutesPage.button_payment).click()
 
     def button_add_card_click(self):
-        return self.driver.find_element(*self.button_add_card).click()
+        return self.driver.find_element(*locators.LocatorsUrbanRoutesPage.button_add_card).click()
 
     def card_number_holder_set(self, card_number):
-        return self.driver.find_element(*self.card_number_holder).send_keys(card_number)
+        return self.driver.find_element(*locators.LocatorsUrbanRoutesPage.card_number_holder).send_keys(card_number)
 
     def get_card_number(self):
-        return self.driver.find_element(*self.card_number_holder).get_property('value')
+        return self.driver.find_element(*locators.LocatorsUrbanRoutesPage.card_number_holder).get_property('value')
 
     def card_code_holder_set(self, card_code):
-        return self.driver.find_element(*self.card_code_holder).send_keys(card_code)
+        return self.driver.find_element(*locators.LocatorsUrbanRoutesPage.card_code_holder).send_keys(card_code)
 
     def get_card_code(self):
-        return self.driver.find_element(*self.card_code_holder).get_property('value')
+        return self.driver.find_element(*locators.LocatorsUrbanRoutesPage.card_code_holder).get_property('value')
 
     def click_code_holder_click(self):
-        return self.driver.find_element(*self.click_code_holder).click()
+        return self.driver.find_element(*locators.LocatorsUrbanRoutesPage.click_code_holder).click()
 
     def add_card_confirmation_click(self):
-        return self.driver.find_element(*self.add_card_confirmation).click()
+        return self.driver.find_element(*locators.LocatorsUrbanRoutesPage.add_card_confirmation).click()
 
     def card_quit_click(self):
-        return self.driver.find_element(*self.card_quit).click()
+        return self.driver.find_element(*locators.LocatorsUrbanRoutesPage.card_quit).click()
 
     def message_for_driver_holder_set(self, message_for_driver):
-        return self.driver.find_element(*self.message_for_driver_holder).send_keys(message_for_driver)
+        return self.driver.find_element(*locators.LocatorsUrbanRoutesPage.message_for_driver_holder).send_keys(message_for_driver)
 
     def get_driver_message_text(self):
-        return self.driver.find_element(*self.message_for_driver_holder).text
+        return self.driver.find_element(*locators.LocatorsUrbanRoutesPage.message_for_driver_holder).text
 
     def manta_panuelo_slider_click(self):
-        return self.driver.find_element(*self.manta_panuelo_slider).click
+        return self.driver.find_element(*locators.LocatorsUrbanRoutesPage.manta_panuelo_slider).click
 
     def helado_plus_click(self):
-        return self.driver.find_element(*self.helado_plus).click()
+        return self.driver.find_element(*locators.LocatorsUrbanRoutesPage.helado_plus).click()
 
     def get_helado_counter(self):
-        return self.driver.find_element(*self.helado_counter).text
+        return self.driver.find_element(*locators.LocatorsUrbanRoutesPage.helado_counter).text
 
     def smart_button_main_click(self):
-        return self.driver.find_element(*self.smart_button_main).click
+        return self.driver.find_element(*locators.LocatorsUrbanRoutesPage.smart_button_main).click
 
     def wait_for_load_modal(self):
-        WebDriverWait(self.driver, 3).until(expected_conditions.visibility_of_element_located(*self.modal_window))
+        WebDriverWait(self.driver, 3).until(expected_conditions.visibility_of_element_located(*locators.LocatorsUrbanRoutesPage.modal_window))
 
     def get_modal_window_text(self):
-        return self.driver.find_element(*self.modal_order_header_title).text
+        return self.driver.find_element(*locators.LocatorsUrbanRoutesPage.modal_order_header_title).text
 
     def wait_for_load_modal_driver_info(self):
-        WebDriverWait(self.driver, 3).until(expected_conditions.visibility_of_element_located(*self.modal_window_driver))
+        WebDriverWait(self.driver, 3).until(expected_conditions.visibility_of_element_located(*locators.LocatorsUrbanRoutesPage.modal_window_driver))
 
 
 
