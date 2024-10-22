@@ -35,7 +35,7 @@ def retrieve_phone_code(driver) -> str:
         return code
 
 
-#Clase de seccion para agregar direccion desde y hasta
+#Clase para agregar direccion desde y hasta
 class UrbanRoutesPage:
     #Indicar Marcadores
     from_field = (By.ID, 'from')
@@ -170,8 +170,8 @@ class TestUrbanRoutes:
         return self.driver.find_element(By.ID,"number").get_property('value')
         assert self.driver.find_element(By.ID,"number")==number_card
 
-        time.sleep(4)
-
+    def test_quit_card_modal(self):
+        return self.driver.find_element(By.XPATH, '//*[@id="root"]/div/div[2]/div[2]/div[2]/button').click()
 
     #Prueba 5 escribir un mensaje para el controlador
     def test_whrite_message(self):
@@ -180,19 +180,21 @@ class TestUrbanRoutes:
         whrite_message=SendNewMessage(self.driver)
         whrite_message.white_mew_message(message)
         assert whrite_message.return_message()==message
+        time.sleep(4)
 
 
     #Prueba 6 Pedir una manta y pañuelo
     def test_ask_for_blanket(self):
-        self.driver.find_element(By.ID,"comment").send_keys(Keys.TAB,Keys.SPACE)
-        assert self.driver.find_element(By.XPATH,"//div[@class='r-sw-container']/div[@class='r-sw']/div[@class='switch']").is_enabled()
+        return self.driver.find_element(By.XPATH,'//*[@id="root"]/div/div[3]/div[3]/div[2]/div[2]/div[4]/div[2]/div[1]/div/div[2]/div/span').click()
 
 
     #Prueba 7 solicitar 2 helados
     def test_2_icecream(self):
+        time.sleep(3)
         self.driver.find_element(By.XPATH,'//*[@id="root"]/div/div[3]/div[3]/div[2]/div[2]/div[4]/div[2]/div[3]/div/div[2]/div[1]/div/div[2]/div/div[3]').click()
         self.driver.find_element(By.XPATH,'//*[@id="root"]/div/div[3]/div[3]/div[2]/div[2]/div[4]/div[2]/div[3]/div/div[2]/div[1]/div/div[2]/div/div[3]').click()
         assert self.driver.find_element(By.XPATH,'//*[@id="root"]/div/div[3]/div[3]/div[2]/div[2]/div[4]/div[2]/div[3]/div/div[2]/div[1]/div/div[2]/div/div[2]') == '2'
+
     #Prueba 8
     def test_final_button(self):
         assert self.driver.find_element(By.CSS_SELECTOR,"smart-button-secondary").is_enabled() == True
