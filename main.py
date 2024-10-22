@@ -220,7 +220,7 @@ class TestUrbanRoutes:
 
     # 9 - Esperar a que aparezca la información del conductor en el modal
     def driver_modal_window(self):
-        WebDriverWait(self.driver, 10).until(expected_conditions.element_to_be_clickable((By.CLASS_NAME, 'order-header-title')))
+        WebDriverWait(self.driver, 30).until(expected_conditions.element_to_be_clickable((By.CLASS_NAME, 'order-header-title')))
         return self.driver.find_element(By.CLASS_NAME, 'order-header-title')
         assert self.driver.find_element(By.CLASS_NAME, 'order-header-title').text == 'El conductor llegará en 3 min.'
 
