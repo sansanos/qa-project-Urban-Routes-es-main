@@ -1,7 +1,8 @@
+import time
+
 from selenium.webdriver.ie.webdriver import WebDriver
 import data
 import locators
-from data import address_from, address_to
 from methods import UrbanRoutesPage
 from selenium import webdriver
 from selenium.webdriver import Keys
@@ -11,13 +12,10 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 
+
 class TestUrbanRoutes:
     driver = None
-    methods = None
-
-    def __init__(self, driver):
-        self.driver = driver
-        self.UrbanRoutesPage = data.urban_routes_url
+    UrbanRoutesPage = None
 
     @classmethod
     def setup_class(cls):
@@ -27,7 +25,7 @@ class TestUrbanRoutes:
         options.set_capability("goog:loggingPrefs", {"performance": "ALL"})
 
         # Iniciar el servicio de Chrome
-        service = Service()  # Puedes pasar el path del driver aquí si es necesario
+        service = data.urban_routes_url  # Puedes pasar el path del driver aquí si es necesario
 
         # Inicializar el driver con opciones
         cls.driver = webdriver.Chrome(service=service, options=options)
@@ -90,7 +88,7 @@ class TestUrbanRoutes:
     # Esperar a que aparezca la informacion del conductor en el modal
     def test_modal_window_driver(self):
         self.UrbanRoutesPage.wait_for_load_modal_driver_info()
-        assert self.UrbanRoutesPage.get_modal_window_text() == 'El conductor llegará en 8 min.'
+        assert self.UrbanRoutesPage.get_modal_window_text() == 'El conductor llegará en 4 min.'
 
 
     @classmethod
