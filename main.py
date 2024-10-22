@@ -214,9 +214,15 @@ class TestUrbanRoutes:
 
     # 8 - Aparece el modal para buscar un taxi
     def test_pedir_taxi(self):
-        time.sleep(4)
-        return self.driver.find_element(By.CLASS_NAME, 'smart-button-main').click()
-        assert self.driver.find_element(By.CSS_SELECTOR,"smart-button-secondary").is_enabled() == True
+        WebDriverWait(self.driver, 10).until(expected_conditions.element_to_be_clickable((By.XPATH, '//*[@id="root"]/div/div[3]/div[4]/button/span[1]')))
+        return self.driver.find_element(By.XPATH, '//*[@id="root"]/div/div[3]/div[4]/button/span[1]').click()
+        assert self.driver.find_element(By.XPATH,'//*[@id="root"]/div/div[3]/div[4]/button/span[1]').is_enabled() == True
+
+    # 9 - Esperar a que aparezca la información del conductor en el modal
+    def driver_modal_window(self):
+        WebDriverWait(self.driver, 10).until(expected_conditions.element_to_be_clickable((By.CLASS_NAME, 'order-header-title')))
+        return self.driver.find_element(By.CLASS_NAME, 'order-header-title')
+        assert self.driver.find_element(By.CLASS_NAME, 'order-header-title').text == 'El conductor llegará en 3 min.'
 
 
     @classmethod
