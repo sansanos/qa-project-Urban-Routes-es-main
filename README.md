@@ -22,8 +22,8 @@ de solicitud y modos de transpporte, los cuales son seleccionados por el usuario
 
 ## Proceso:
 
-Este proceso de automatización cuenta un patrón de diseño llamado
-**POM** (Page Object Model), que 
+Este proceso de automatización cuenta conun patrón de diseño llamado
+**POM** (Page Object Model), que  
 ayuda a organizar y mantener el código de prueba mediante la creación de 
 clases independientes para cada página web o componente. 
 
