@@ -27,6 +27,11 @@ Este proceso de automatización cuenta un patrón de diseño llamado
 ayuda a organizar y mantener el código de prueba mediante la creación de 
 clases independientes para cada página web o componente. 
 
+Se debe instalar el paquete Pytest, este se encuentra dentro de la 
+opción "Python Packages" de Pycharm, o por medio de la terminal usando el comando 
+"pip3 install pytest". El comando usado para correr las pruebas en la terminal es 
+"pytest qa-project-Urban-Routes-es-main/test_cases.py".
+
 Primero se organizan los datos a usar para las pruebas (data).
 Luego se seleccionan todos los difentes localizadores necesarios (locators), 
 se definen todos los metodos a usar (methods), y por último se realizan
