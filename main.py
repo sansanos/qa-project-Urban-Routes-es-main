@@ -1,4 +1,3 @@
-import time
 import code_sms
 import data
 import locators
@@ -6,7 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
-from methods import UrbanRoutesPage, ComfortMethod, AddPhoneNumber, SendMessage
+from methods import UrbanRoutesPage
 
 
 class TestUrbanRoutes:
@@ -25,10 +24,9 @@ class TestUrbanRoutes:
         self.driver.get(data.urban_routes_url)
         WebDriverWait(self.driver,10).until(expected_conditions.element_to_be_clickable(
             locators.LocatorsUrbanRoutesPage.from_field))
-        route_page = UrbanRoutesPage(self.driver)
-        route_page.set_rout(data.address_from, data.address_to)
-        assert route_page.return_from() == data.address_from
-        assert route_page.return_to() == data.address_to
+        UrbanRoutesPage(self.driver).set_rout(data.address_from, data.address_to)
+        assert UrbanRoutesPage(self.driver).return_from() == data.address_from
+        assert UrbanRoutesPage(self.driver).return_to() == data.address_to
 
     # 2 - Seleccionar la tarifa Comfort
     def test_select_comfort(self):
@@ -37,18 +35,15 @@ class TestUrbanRoutes:
         self.driver.find_element(*locators.LocatorsUrbanRoutesPage.button_round).click()
         WebDriverWait(self.driver,10).until(expected_conditions.element_to_be_clickable(
             locators.LocatorsUrbanRoutesPage.button_comfort))
-        travel_method = ComfortMethod(self.driver)
-        travel_method.select_comfort()
-        WebDriverWait(self.driver,10)
-        assert travel_method.return_status_trip() == True
+        UrbanRoutesPage(self.driver).select_comfort()
+        assert UrbanRoutesPage(self.driver).return_status_trip() == True
 
     # 3 - Rellenar el número de teléfono
     def test_select_phone_number(self):
         self.driver.find_element(*locators.LocatorsUrbanRoutesPage.button_phone_number).click()
         WebDriverWait(self.driver,10).until(expected_conditions.element_to_be_clickable(
             locators.LocatorsUrbanRoutesPage.phone_number_holder))
-        send_new_phone = AddPhoneNumber(self.driver)
-        send_new_phone.sent_phone_nomber(data.phone_number)
+        UrbanRoutesPage(self.driver).sent_phone_nomber(data.phone_number)
         WebDriverWait(self.driver,10).until(expected_conditions.element_to_be_clickable(
             locators.LocatorsUrbanRoutesPage.sms_code_holder))
         WebDriverWait(self.driver, 10).until(expected_conditions.element_to_be_clickable(
@@ -56,7 +51,7 @@ class TestUrbanRoutes:
         self.driver.find_element(*locators.LocatorsUrbanRoutesPage.sms_code_holder).send_keys(
             code_sms.retrieve_phone_code(driver=self.driver))
         self.driver.find_element(*locators.LocatorsUrbanRoutesPage.button_sms_code_confirmation).click()
-        assert send_new_phone.return_phon_number() == data.phone_number
+        assert UrbanRoutesPage(self.driver).return_phon_number() == data.phone_number
 
     # 4 - Agregar una tarjeta de crédito
     def test_add_car(self):
@@ -79,9 +74,8 @@ class TestUrbanRoutes:
     def test_set_message(self):
         WebDriverWait(self.driver, 10).until(expected_conditions.element_to_be_clickable(
             locators.LocatorsUrbanRoutesPage.message_for_driver_holder))
-        set_message = SendMessage(self.driver)
-        set_message.set_message(data.message_for_driver)
-        assert set_message.return_message() == data.message_for_driver
+        UrbanRoutesPage(self.driver).set_message(data.message_for_driver)
+        assert UrbanRoutesPage(self.driver).return_message() == data.message_for_driver
 
     # 6 - Pedir una manta y pañuelos
     def test_slider_blanket_hanky(self):
