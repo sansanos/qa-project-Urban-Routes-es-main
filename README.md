@@ -1,3 +1,40 @@
+# Urban Routes Project
+***Created by Santiago Sánchez Ospina (Group 14, SPRINT #8)***
+
+## Project Description:
+
+This project aims to develop an automation solution using Selenium, a tool that enables web browser automation. The primary objective of this project is to automate the process of requesting a ride, simulating the interactions a user would manually perform on the Urban Routes transportation platform. Through this automation, the goal is to optimize and simplify the process, ensuring it executes accurately in a repetitive and efficient manner.
+
+## About the Application:
+
+Urban Routes is a web application that provides a transportation service to users. The application offers three types of rides, each with its own request options and modes of transportation, which the user selects.
+
+## Process:
+
+This automation process uses a design pattern called ***POM*** (Page Object Model), which helps organize and maintain the test code by creating separate classes for each web page or component.
+
+The Pytest package must be installed, which can be found in PyCharm's "Python Packages" option or through the terminal using the command pip3 install pytest. The command to run the tests in the terminal is pytest qa-project-Urban-Routes-es-main/test_cases.py.
+
+First, the data needed for the tests is organized. Then, all necessary locators are selected, all methods to be used are defined, and finally, all test cases related to the car request service are executed.
+
+## Required Requests:
+
+Set the address
+Select the Comfort fare
+Enter the phone number
+Add a credit card
+Write a message for the driver
+Request a blanket and tissues
+Request 2 ice creams
+A modal appears to search for a taxi
+
+## Technologies
+
+This project implemented an automation based on a sequential flow that included a general scenario simulating the full process of requesting a car through the Urban Routes platform. Python was used as the programming language along with the POM design pattern. Through the integrated development environment PyCharm, the Selenium WebDriver tool was downloaded and installed, configured for the Chrome browser, allowing for automatic interaction with the web environment.
+
+During the various development phases, several verification and validation activities (asserts) were performed to ensure that each step in the automated flow met functional expectations. These verifications allowed for the identification of possible improvements and adjustments to the process. As a result of these verification stages, a total of 8 distinct tests were conducted, each designed to evaluate different aspects of the system and ensure the proper performance of the overall automated flow.
+
+
 # Proyecto Urban Routes 
 
 ***Elaborado por Santiago Sánchez Ospina (14avo grupo, SPRINT #8)***
